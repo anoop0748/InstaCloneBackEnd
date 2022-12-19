@@ -7,7 +7,7 @@ const cors = require("cors");
 const port = process.env.port|| 3001
 const uri = process.env.DBURI
 mongoose.set("strictQuery", true);
-const DB ="mongodb+srv://Anoop:Anoop1234@cluster0.hk3jji4.mongodb.net/instaPost?retryWrites=true&w=majority";
+
 
   
 mongoose.connect(uri, (e) => {
