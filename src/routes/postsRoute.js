@@ -16,7 +16,7 @@ cloudinary.config({
 router.get("/posts", async (req, res) => {
   
   const posts = await instaclone.find();
-  console.log(posts)
+  
   try {
     res
       .status(200)
@@ -30,7 +30,7 @@ router.post("/posts", async (req, res, next) => {
   const file = req.files.PostImage.tempFilePath;
   // console.log(file)
   
-  cloudinary.uploader.upload(file, async (err, result) => {
+  await cloudinary.uploader.upload(file, async (err, result) => {
     //  console.log(err);
     // console.log(result);
     const posts = await instaclone.create({
@@ -48,7 +48,7 @@ router.post("/posts", async (req, res, next) => {
       .catch((e) => {
         console.log(e.message);
       });
-  console.log(posts);
+  
     try {
       res.status(200).json({ status: "Posted Successfully", Result: posts });
     } catch (e) {
