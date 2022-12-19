@@ -4,14 +4,13 @@ const mongoose = require("mongoose");
 const router = require("./src/routes/postsRoute");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
-const port = 3001;
+const port = process.env.port|| 3001
+const uri = process.env.DBURI
 mongoose.set("strictQuery", true);
 const DB ="mongodb+srv://Anoop:Anoop1234@cluster0.hk3jji4.mongodb.net/instaPost?retryWrites=true&w=majority";
 
-let oldDb =
- "mongodb+srv://cluster0.hk3jji4.mongodb.net/instaPost"
   
-mongoose.connect(DB, (e) => {
+mongoose.connect(uri, (e) => {
   if(e){console.log("DataBase Error :",e)}
   else{console.log("Connected to DB");}
 });
