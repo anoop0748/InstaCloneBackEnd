@@ -35,7 +35,7 @@ router.post("/posts", async (req, res, next) => {
     // console.log(result);
     const posts = await instaclone.create({
       PostImage: result.original_filename + result.format,
-      imageUrl: result.url,
+      imageUrl: result.secure_url,
       likes: Math.floor(Math.random() * 10000),
       date:new Date().toLocaleDateString(),
       ...req.body,
